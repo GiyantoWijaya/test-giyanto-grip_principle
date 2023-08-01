@@ -13,6 +13,7 @@ exports.index = async (req, res) => {
   return success(res, 200, "Data All Users", users);
 };
 
+// register
 exports.create = async (req, res) => {
   const data = {
     name: req.body.name,
@@ -31,6 +32,7 @@ exports.create = async (req, res) => {
   }
 };
 
+// login
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -59,6 +61,7 @@ exports.login = async (req, res) => {
   }
 };
 
+// change password
 exports.updatePassword = async (req, res) => {
   const token = req.cookies.jwt;
   const newPassword = encrypt(req.body.password);
@@ -82,6 +85,7 @@ exports.updatePassword = async (req, res) => {
   }
 };
 
+// logout
 exports.logout = async (req, res) => {
   const token = req.cookies.jwt;
   const user = await User.findOne({ where: { token: token } });

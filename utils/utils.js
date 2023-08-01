@@ -46,6 +46,7 @@ async function authentication(email, password) {
   }
 }
 
+// middleware for authentication
 function auth(req, res, next) {
   const token = req.cookies.jwt;
 
